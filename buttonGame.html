@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<meta charset = "UTF-8"/>
+		<title>Button Game</title>
+		<meta name = "viewport" content = "width=device-width, initial-scale = 1.0"/>
+		<link href = "style.css" rel = "stylesheet" type = "text/css"/>
+	</head>
+	
+	<body id = "body" onload="background()">
+		<div id = "all">
+			<div class = "bg-Squares">
+				<button id = "shapeOne" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeTwo" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeThree" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeFour" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeFive" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeSix" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeSeven" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeEight" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeNine" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeTen" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeEleven" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeTwelve" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeThirteen" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeFourteen" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeFifteen" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeSixteen" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeSeventeen" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeEighteen" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeNineteen" class = "shape empty" onclick = "pop()"></button>
+				<button id = "shapeTwenty" class = "shape empty" onclick = "pop()"></button>
+			</div>
+			<script src="game.js"></script>
+			<div id = "title" class = "titleScreen">
+				<h1 id = "titleWord">The</h1>
+				<button id = "titleButton" class = "button titleButton" onclick = "titlePush()">Button</button>
+				<h1 id = "titleWord2">Game</h1>
+			</div>
+			<div id = "money" class = "money">
+				<h3 id = "moneyWord">Money:</h3>
+				<h3 id = "moneyNum">10000</h3>
+			</div>
+			<div id = "powerUps" class = "powerUps">
+				<button id = "lifeSaverPower" class = "powerUpButton" onclick = "useLS()"></button>
+				<p id = "lifeSaverAmount">0</p>
+				<button id = "scoreIncreasePower" class = "powerUpButton" onclick = "useSI()"></button>
+				<p id = "scoreIncreaseAmount">0</p>
+				<button id = "revealPower" class = "powerUpButton" onclick = "useR()"></button>
+				<p id = "revealAmount">0</p>
+				<button id = "repeatPower" class = "powerUpButton" onclick = "useRe()"></button>
+				<p id = "repeatAmount">0</p>
+				<button id = "robotPower" class = "powerUpButton" onclick = "useRo()"></button>
+				<p id = "robotAmount">0</p>
+			</div>
+			<h3 id = "powerUpText" class = "powerUpText hidden">N/A</h3>
+			<div id = "instructions" class = "pageContent" hidden>
+				<h2>Instructions</h2>
+				<p>Repeat the exact order the buttons were pressed in order to pass the round. Each correct answer will result in points! Score as high as you can. </br> Rounds will get progressively more difficult. Choose a difficulty that best fits your skills. Use power-ups to your advantage! </br></br> Have fun!</p>
+				<h2>Controls</h2>
+				<p>Mouse / Click </br>OR</br>s d f j k l - Each key represents a color</p>
+			</div>
+			</br>
+			<div class = "center">
+				<div id = "menu" class = "menu">
+					<button id = "startButton" class = "button startButton" onclick = "diffMenu()">Start Game</button>
+					<button id = "instructionsButton" class = "button startButton" onclick = "showInstructions()">Instructions</button>
+					<button id = "shopButton" class = "button startButton" onclick = "showShop()">Shop</button>
+				</div>
+				
+				<div id = "shopMenu" class = "shopMenu" hidden>
+					<h2 class = "shopTitle center">The Shop</h2>
+					<table>
+						<thread>
+							<tr>
+								<th scope = "col" class = "iconName">Icon</th>
+								<th scope = "col" class = "itemName">Item Name</th>
+								<th scope = "col" class = "priceName">Price</th>
+								<th scope = "col" class = "powerName">Power / Description</th>
+								<th scope = "col" class = "buyName">Buy</th>
+							</tr>
+						</thread>
+						<tbody>
+							<tr>
+								<td class = "shopIcon"><div id = "lifeSaverPowerSmall"></div></td>
+								<td class = "shopName">Life Healer</td>
+								<td class = "shopPrice">$350</td>
+								<td class = "descrip">Adds an Extra Life to the current Life Count. Can only be used a maximum of 5 times per round.</td>
+								<td class = "item"><button id = "lifeSaverButton" class = "shopButton notEnough" onclick = "buyLifeSaver()">Buy</button></td>
+							</tr>
+							<tr>
+								<td class = "shopIcon"><div id = "scoreIncreasePowerSmall"></div></td>
+								<td class = "shopName">Score Increase</td>
+								<td class = "shopPrice">$500</td>
+								<td class = "descrip">Increases score by a random amount (50 - 250%). Only active for ONE round.</td>
+								<td class = "item"><button id = "scoreIncreaseButton" class = "shopButton notEnough" onclick = "buyScoreIncrease()">Buy</button></td>
+							</tr>
+							<tr>
+								<td class = "shopIcon"><div id = "revealPowerSmall"></div></td>
+								<td class = "shopName">Button Reveal</td>
+								<td class = "shopPrice">$750</td>
+								<td class = "descrip">Reveals the current button in order.</td>
+								<td class = "item"><button id = "revealButton" class = "shopButton notEnough" onclick = "buyReveal()">Buy</button></td>
+							</tr>
+							<tr>
+								<td class = "shopIcon"><div id = "repeatPowerSmall"></div></td>
+								<td class = "shopName">Button Repeat</td>
+								<td class = "shopPrice">$750</td>
+								<td class = "descrip">Repeats the button order again 3x slower. During the repeat, buttons cannot be pressed. Can only be used 2 time per round.</td>
+								<td class = "item"><button id = "repeatButton" class = "shopButton notEnough" onclick = "buyRepeat()">Buy</button></td>
+							</tr>
+							<tr>
+								<td class = "shopIcon"><div id = "robotOnPowerSmall"></div></td>
+								<td class = "shopName">Unreliable Robot</td>
+								<td class = "shopPrice">$3,000</td>
+								<td class = "descrip">! USE WITH CAUTION ! This robot will play the round for you, but it's memory isn't the best as it progressively get's worse for each correct guess... Once activated, it cannot be stopped for the round.</td>
+								<td class = "item"><button id = "robotButton" class = "shopButton notEnough" onclick = "buyRobot()">Buy</button></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class = "menu">
+						<p id = "shopText" class = "shopText"></p>
+					</div>
+				</div>
+				
+				<div id = "difficulties" class = "difficulties" hidden>
+					<button id = "easyButton" class = "button startButton" onclick = "setEasy()">Easy</button>
+					<button id = "mediumButton" class = "button startButton" onclick = "setMedium()">Medium</button>
+					<button id = "hardButton" class = "button startButton" onclick = "setHard()">Hard</button>
+					<button id = "expertButton" class = "button startButton" onclick = "setExpert()">Expert</button>
+					<button id = "masterButton" class = "button startButton" onclick = "setMaster()">Master</button>
+					<button id = "specialButton" class = "button startButton" onclick = "setSpecial()">Classic</button>
+				</div>
+			</div>
+			<button id = "backButton" class = "button startButton" onclick = "showMenu()" hidden>Back</button>
+			<div id = "gameContent" hidden>
+				<div class = "permStats">
+					<h3 id = "highScoreWord" class = "sp">High Score:</h3>
+					<h3 id = "highScoreNum" class = "sp">0</h3>
+					<h3 id = "highRoundWord" class = "sp">Highest Round:</h3>
+					<h3 id = "highRoundNum" class = "sp">0</h3>
+				</div>
+				<div class = "stats">
+					<h3 id = "scoreWord" class = "title">Score:</h3>
+					<h3 id = "scoreNum" class = "gameNum">0</h3>
+					<h3 id = "roundWord" class = "title">Round:</h3>
+					<h3 id = "roundNum" class = "gameNum">1</h3>
+					<h3 id = "lifeWord" class = "title">Lives:</h3>
+					<h3 id = "lifeNum" class = "gameNum low high">3</h3>
+					<h3 id = "resultWord" class = "title">Result:</h2>
+					<h3 id = "resultNum" class = "gameNum error correct">Please wait...</h2>
+				</div>
+				</br></br>
+				<div id = "theButtons" class = "theButtons">
+					<button id = "redButton" class = "button redButton" onclick = "redPush()">Red</button>
+					<button id = "orangeButton" class = "button orangeButton" onclick = "orangePush()">Orange</button>
+					<button id = "yellowButton" class = "button yellowButton" onclick = "yellowPush()">Yellow</button>
+					<button id = "greenButton" class = "button greenButton" onclick = "greenPush()">Green</button>
+					<button id = "blueButton" class = "button blueButton" onclick = "bluePush()">Blue</button>
+					<button id = "purpleButton" class = "button purpleButton" onclick = "purplePush()">Purple</button>
+				</div>
+				<div class = "otherButtons">
+					<button id = "nextRound" class = "button startButton" onclick = "nextRound()" hidden>Next Round</button>
+					<button id = "tryAgain" class = "button startButton" onclick = "tryAgain()" hidden>Try Again</button>
+					<button id = "menuButton" class = "button startButton" onclick = "warning()" hidden>Main Menu</button>
+				</div>
+				<div id = "warningSign" class = "warningSign" hidden>
+					<h2 id = "warningHeading">Warning!</h2>
+					<p>Returning to Main Menu will reset progress! </br> Are you sure?</p>
+					<button class = "button startButton" onclick = "showMenu()">Yes</button>
+					<button class = "button startButton" onclick = "cancel()">Cancel</button>
+				</div>
+			</div>
+			
+			<audio id = "redSoundPush" src="audio/soundEffects/redButtonPush.mp3" type="audio/mpeg"></audio>
+			<audio id = "orangeSoundPush" src="audio/soundEffects/orangeButtonPush.mp3" type="audio/mpeg"></audio>
+			<audio id = "yellowSoundPush" src="audio/soundEffects/yellowButtonPush.mp3" type="audio/mpeg"></audio>
+			<audio id = "greenSoundPush" src="audio/soundEffects/greenButtonPush.mp3" type="audio/mpeg"></audio>
+			<audio id = "blueSoundPush" src="audio/soundEffects/blueButtonPush.mp3" type="audio/mpeg"></audio>
+			<audio id = "purpleSoundPush" src="audio/soundEffects/purpleButtonPush.mp3" type="audio/mpeg"></audio>
+			<audio id = "easySoundPush" src="audio/soundEffects/easyPush.mp3" type="audio/mpeg"></audio>
+			<audio id = "normalSoundPush" src="audio/soundEffects/normalPush.mp3" type="audio/mpeg"></audio>
+			<audio id = "hardSoundPush" src="audio/soundEffects/hardPush.mp3" type="audio/mpeg"></audio>
+			<audio id = "expertSoundPush" src="audio/soundEffects/expertPush.mp3" type="audio/mpeg"></audio>
+			<audio id = "masterSoundPush" src="audio/soundEffects/masterPush.mp3" type="audio/mpeg"></audio>
+			<audio id = "specialSoundPush" src="audio/soundEffects/specialPush.mp3" type="audio/mpeg"></audio>
+			<audio id = "buttonSoundPush" src="audio/soundEffects/buttonPush.mp3" type="audio/mpeg"></audio>
+			<audio id = "button2SoundPush" src="audio/soundEffects/buttonPush2.mp3" type="audio/mpeg"></audio>
+			<audio id = "button3SoundPush" src="audio/soundEffects/buttonPush3.mp3" type="audio/mpeg"></audio>
+			<audio id = "whirSoundPush" src="audio/soundEffects/whirSoundPush.mp3" type="audio/mpeg"></audio>
+			
+			<audio id = "redSoundUnpush" src="audio/soundEffects/redButtonUnpush.mp3" type="audio/mpeg"></audio>
+			<audio id = "orangeSoundUnpush" src="audio/soundEffects/orangeButtonUnpush.mp3" type="audio/mpeg"></audio>
+			<audio id = "yellowSoundUnpush" src="audio/soundEffects/yellowButtonUnpush.mp3" type="audio/mpeg"></audio>
+			<audio id = "greenSoundUnpush" src="audio/soundEffects/greenButtonUnpush.mp3" type="audio/mpeg"></audio>
+			<audio id = "blueSoundUnpush" src="audio/soundEffects/blueButtonUnpush.mp3" type="audio/mpeg"></audio>
+			<audio id = "purpleSoundUnpush" src="audio/soundEffects/purpleButtonUnpush.mp3" type="audio/mpeg"></audio>
+			<audio id = "easySoundUnpush" src="audio/soundEffects/easyUnpush.mp3" type="audio/mpeg"></audio>
+			<audio id = "normalSoundUnpush" src="audio/soundEffects/normalUnpush.mp3" type="audio/mpeg"></audio>
+			<audio id = "hardSoundUnpush" src="audio/soundEffects/hardUnpush.mp3" type="audio/mpeg"></audio>
+			<audio id = "expertSoundUnpush" src="audio/soundEffects/expertUnpush.mp3" type="audio/mpeg"></audio>
+			<audio id = "masterSoundUnpush" src="audio/soundEffects/masterUnpush.mp3" type="audio/mpeg"></audio>
+			<audio id = "specialSoundUnpush" src="audio/soundEffects/specialUnpush.mp3" type="audio/mpeg"></audio>
+			<audio id = "buttonSoundUnpush" src="audio/soundEffects/buttonUnpush.mp3" type="audio/mpeg"></audio>
+			<audio id = "button2SoundUnpush" src="audio/soundEffects/buttonUnpush2.mp3" type="audio/mpeg"></audio>
+			<audio id = "button3SoundUnpush" src="audio/soundEffects/buttonUnpush3.mp3" type="audio/mpeg"></audio>
+			<audio id = "whirSoundUnpush" src="audio/soundEffects/whirSoundUnpush.mp3" type="audio/mpeg"></audio>
+			
+			<audio id = "startNextSound" src="audio/soundEffects/startNextButton.mp3" type="audio/mpeg"></audio>
+			<audio id = "wrongSound" src="audio/soundEffects/wrongButton.mp3" type="audio/mpeg"></audio>
+			<audio id = "notEnoughSound" src="audio/soundEffects/notEnough.mp3" type="audio/mpeg"></audio>
+			<audio id = "noPowerUpSound" src="audio/soundEffects/noPowerUp.mp3" type="audio/mpeg"></audio>
+			<audio id = "popSound" src="audio/soundEffects/popSound.mp3" type="audio/mpeg"></audio>
+			
+			<audio id = "victorySong" src="audio/songs/victorySong.mp3" type="audio/mpeg"></audio>
+			<audio id = "pianoRiffSound" src="audio/soundEffects/pianoRiff.mp3" type="audio/mpeg"></audio>
+			<audio id = "victorySong2" src="audio/songs/victorySong2.mp3" type="audio/mpeg"></audio>
+			<audio id = "gameOver" src="audio/songs/gameOver.mp3" type="audio/mpeg"></audio>
+			<audio id = "lifeSaverSong" src="audio/songs/lifeSaverChime.mp3" type="audio/mpeg"></audio>
+			<audio id = "scoreIncreaseSong" src="audio/songs/scoreIncreaseChime.mp3" type="audio/mpeg"></audio>
+			<audio id = "revealSong" src="audio/songs/revealChime.mp3" type="audio/mpeg"></audio>
+			<audio id = "repeatSong" src="audio/songs/repeatChime.mp3" type="audio/mpeg"></audio>
+			<audio id = "robotOnSong" src="audio/songs/robotOnChime.mp3" type="audio/mpeg"></audio>
+			<audio id = "robotOffSong" src="audio/songs/robotOffChime.mp3" type="audio/mpeg"></audio>
+			<audio id = "firstSong" src="audio/songs/firstBeat.mp3" type="audio/mpeg" loop></audio>
+			<audio id = "secondSong" src="audio/songs/secondBeat.mp3" type="audio/mpeg" loop></audio>
+			<audio id = "thirdSong" src="audio/songs/thirdBeat.mp3" type="audio/mpeg" loop></audio>
+		</div>
+		</br>
+	</body>
+
+</html>
